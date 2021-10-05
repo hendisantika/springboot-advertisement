@@ -36,4 +36,17 @@ public class AdvertisementConverter {
         ad.setPictures(model.getPicturesIds().stream().map(pictureService::findEntityById).collect(Collectors.toList()));
         return ad;
     }
+
+    public AdvertisementDTO entityToModel(Advertisement ad) {
+        AdvertisementDTO model = new AdvertisementDTO();
+        model.setId(ad.getId());
+        model.setDescription(ad.getDescription());
+        model.setTypology(ad.getTypology());
+        model.setHouseSize(ad.getHouseSize());
+        model.setGardenSize(ad.getGardenSize());
+        model.setIrrelevantFrom(ad.getIrrelevantFrom());
+        model.setScore(ad.getScore());
+        model.setPictures(ad.getPictures().stream().map(pictureConverter::entityToModel).collect(Collectors.toList()));
+        return model;
+    }
 }
