@@ -2,6 +2,7 @@ package com.hendisantika.component;
 
 import com.hendisantika.dto.AdvertisementScoreDTO;
 import com.hendisantika.entity.Advertisement;
+import com.hendisantika.helper.ScoreHelper;
 import org.springframework.stereotype.Component;
 
 /**
