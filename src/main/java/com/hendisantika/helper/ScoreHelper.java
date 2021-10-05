@@ -86,4 +86,13 @@ public class ScoreHelper {
         }
         return completeScore;
     }
+
+    public static Integer calculateAdScore(Advertisement ad) {
+        int score = 0;
+        score += getAdPicturesScore(ad);
+        score += getAdDescriptionScore(ad);
+        score += getCompleteAdScore(ad);
+        // Max will be allways 100
+        return score > 100 ? 100 : score;
+    }
 }
