@@ -3,12 +3,18 @@ package com.hendisantika.service;
 import com.hendisantika.component.AdvertisementConverter;
 import com.hendisantika.component.AdvertisementScoreConverter;
 import com.hendisantika.dto.AdvertisementDTO;
+import com.hendisantika.entity.Advertisement;
+import com.hendisantika.helper.ScoreHelper;
 import com.hendisantika.repository.AdvertisementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Comparator;
+import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 /**
@@ -42,5 +48,19 @@ public class AdvertisementService {
             advertisements.sort(comparator);
         }
         return advertisements;
+    }
+
+    public Advertisement create(AdvertisementDTO ad) {
+        if (ad.getId() != null) {
+            Optional<Advertisement> existedAd = advertisementRepository.findById(ad.getId());
+            if (existedAd.isPresent()) {
+                throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Advertisement with Id " + ad.getId() + " " +
+                        "already exist");
+            }
+        }
+        Advertisement adEntity = converter.modelToEntity(ad);
+        adEntity.setScore(ScoreHelper.calculateAdScore(adEntity));
+        adEntity.setIrrelevantFrom((adEntity.getScore() < 40) ? new Date().getTime() : null);
+        return advertisementRepository.save(adEntity);
     }
 }
