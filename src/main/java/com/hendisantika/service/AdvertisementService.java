@@ -1,5 +1,6 @@
 package com.hendisantika.service;
 
+import com.hendisantika.component.AdvertisementConverter;
 import com.hendisantika.repository.AdvertisementRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
