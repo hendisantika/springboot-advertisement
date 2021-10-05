@@ -1,5 +1,6 @@
 package com.hendisantika.component;
 
+import com.hendisantika.entity.Picture;
 import com.hendisantika.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -18,4 +19,12 @@ public class PictureConverter {
 
     @Autowired
     private PictureService pictureService;
+
+    public Picture modelToEntity(PictureModel model) {
+        Picture picture = new Picture();
+        picture.setId(model.getId());
+        picture.setUrl(model.getUrl());
+        picture.setQuality(model.getQuality());
+        return picture;
+    }
 }
