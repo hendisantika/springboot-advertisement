@@ -57,4 +57,26 @@ public class ScoreHelper {
         return desScore;
     }
 
+    private static Boolean isAdCompleteByTypology(Advertisement ad) {
+        switch (ad.getTypology()) {
+            case "FLAT":
+                return ad.getDescription() != null
+                        && !ad.getDescription().isEmpty()
+                        && ad.getHouseSize() != null
+                        && ad.getHouseSize() > 0;
+            case "CHALET":
+                return ad.getDescription() != null
+                        && !ad.getDescription().isEmpty()
+                        && ad.getHouseSize() != null
+                        && ad.getHouseSize() > 0
+                        && ad.getGardenSize() != null
+                        && ad.getGardenSize() > 0;
+            case "GARAGE":
+                return true;
+            default:
+                return false;
+        }
+    }
+
+
 }
