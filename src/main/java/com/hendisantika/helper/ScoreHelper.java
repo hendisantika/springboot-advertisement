@@ -1,5 +1,6 @@
 package com.hendisantika.helper;
 
+import com.hendisantika.entity.Advertisement;
 import com.hendisantika.entity.Picture;
 
 /**
@@ -17,4 +18,14 @@ public class ScoreHelper {
     private static Integer getPictureScore(Picture picture) {
         return picture.getQuality() == "HD" ? 20 : 10;
     }
+
+    private static Integer getAdPicturesScore(Advertisement ad) {
+        return ad.getPictures().isEmpty()
+                ? -10
+                : ad.getPictures()
+                .stream()
+                .mapToInt(ScoreHelper::getPictureScore)
+                .sum();
+    }
+
 }
