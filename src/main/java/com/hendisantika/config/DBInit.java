@@ -24,4 +24,11 @@ public class DBInit implements CommandLineRunner {
 
     @Autowired
     private AdvertisementService advertisementService;
+
+    @Override
+    public void run(String... args) throws Exception {
+        logger.info("Starting DB Init!");
+        loadPictures();
+        loadAdvertisements();
+    }
 }
