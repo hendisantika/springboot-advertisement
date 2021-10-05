@@ -1,0 +1,44 @@
+# Spring Information
+spring:
+  application:
+    name: advertisement
+  h2:
+    console:
+      enabled: true
+      path: /h2-console
+  jpa:
+    show-sql: true
+
+# Server Information
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+# App Advertisement Information
+advertisement:
+  irrelevantMinScore: 40
+  typologies:
+    - "FLAT"
+    - "CHALET"
+    - "GARAGE"
+  scores:
+    noPictures: -10
+    pictures:
+      - "HD:20"
+      - "SD:10"
+    haveDescription: 10
+    descriptionContains:
+      - "Luminoso:5"
+      - "Nuevo:5"
+      - "Céntrico:5"
+      - "Reformado:5"
+      - "Atico:5"
+    descriptionLengths:
+      - "FLAT:50:20"
+      - "FLAT:20:10"
+      - "CHALET:50:20"
+    adComplete:
+      - "GARAGE:40:havePhoto"
+      - "FLAT:40:haveDescription:havePhoto:haveHouseSize"
+      - "CHALET:40:haveDescription:havePhoto:haveHouseSize:haveGardenSize"
