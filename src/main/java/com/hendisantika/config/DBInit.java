@@ -2,6 +2,7 @@ package com.hendisantika.config;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hendisantika.dto.AdvertisementDTO;
 import com.hendisantika.dto.PictureDTO;
 import com.hendisantika.service.AdvertisementService;
 import com.hendisantika.service.PictureService;
@@ -51,6 +52,22 @@ public class DBInit implements CommandLineRunner {
             logger.info("Number of pictures created: " + pictures.size());
         } catch (Exception e) {
             logger.error("Unable to create pictures: " + e.getMessage());
+        }
+    }
+
+    private void loadAdvertisements() throws Exception {
+        logger.info("Loading Advertisements");
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<List<AdvertisementDTO>> typeReference = new TypeReference<List<AdvertisementDTO>>() {
+        };
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/json/advertisements.json");
+        try {
+            List<AdvertisementDTO> advertisements = mapper.readValue(inputStream, typeReference);
+            advertisements.forEach(advertisementService::create);
+            logger.info("Number of advertisements created: " + advertisements.size());
+        } catch (Exception e) {
+            logger.error("Unable to create advertisements: " + e.getMessage());
+            throw e;
         }
     }
 }
