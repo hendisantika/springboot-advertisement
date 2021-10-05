@@ -1,5 +1,6 @@
 package com.hendisantika.component;
 
+import com.hendisantika.service.PictureService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
