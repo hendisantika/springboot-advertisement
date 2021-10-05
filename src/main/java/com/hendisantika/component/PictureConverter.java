@@ -28,4 +28,12 @@ public class PictureConverter {
         picture.setQuality(model.getQuality());
         return picture;
     }
+
+    public PictureDTO entityToModel(Picture picture) {
+        PictureDTO model = new PictureDTO();
+        model.setId(picture.getId());
+        model.setUrl(picture.getUrl());
+        model.setQuality(picture.getQuality());
+        return model;
+    }
 }
