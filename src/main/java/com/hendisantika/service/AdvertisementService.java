@@ -3,6 +3,7 @@ package com.hendisantika.service;
 import com.hendisantika.component.AdvertisementConverter;
 import com.hendisantika.component.AdvertisementScoreConverter;
 import com.hendisantika.dto.AdvertisementDTO;
+import com.hendisantika.dto.AdvertisementScoreDTO;
 import com.hendisantika.entity.Advertisement;
 import com.hendisantika.helper.ScoreHelper;
 import com.hendisantika.repository.AdvertisementRepository;
@@ -62,5 +63,12 @@ public class AdvertisementService {
         adEntity.setScore(ScoreHelper.calculateAdScore(adEntity));
         adEntity.setIrrelevantFrom((adEntity.getScore() < 40) ? new Date().getTime() : null);
         return advertisementRepository.save(adEntity);
+    }
+
+    public List<AdvertisementScoreDTO> calculateScores() {
+        return advertisementRepository.findAll().stream()
+                .parallel()
+                .map(adScoreconverter::entityToModel)
+                .collect(Collectors.toList());
     }
 }
