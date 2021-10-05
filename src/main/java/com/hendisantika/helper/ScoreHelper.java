@@ -78,5 +78,12 @@ public class ScoreHelper {
         }
     }
 
-
+    private static Integer getCompleteAdScore(Advertisement ad) {
+        int completeScore = 0;
+        if (ad.getPictures().size() > 0
+                && ScoreHelper.isAdCompleteByTypology(ad)) {
+            completeScore += 40;
+        }
+        return completeScore;
+    }
 }
