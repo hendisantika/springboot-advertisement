@@ -3,6 +3,8 @@ package com.hendisantika.helper;
 import com.hendisantika.entity.Advertisement;
 import com.hendisantika.entity.Picture;
 
+import java.util.Arrays;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springboot-advertisement
@@ -26,6 +28,33 @@ public class ScoreHelper {
                 .stream()
                 .mapToInt(ScoreHelper::getPictureScore)
                 .sum();
+    }
+
+    private static Integer getAdDescriptionScore(Advertisement ad) {
+        String description = ad.getDescription();
+        int desScore = 0;
+        if (description != null && !description.isEmpty()) {
+            desScore += 5;
+            switch (ad.getTypology()) {
+                case "FLAT":
+                    desScore += description.length() > 20 && description.length() < 50
+                            ? 10
+                            : description.length() >= 50
+                            ? 30
+                            : 0;
+                    break;
+                case "CHALET":
+                    desScore += description.length() > 50 ? 20 : 0;
+                    break;
+            }
+            desScore += Arrays.asList(DESCRIPTION_CHARACTERISTICS)
+                    .stream()
+                    .map(String::toLowerCase)
+                    .mapToInt(element -> description.toLowerCase().contains(element) ? 5 : 0)
+                    .sum();
+
+        }
+        return desScore;
     }
 
 }
