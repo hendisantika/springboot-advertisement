@@ -1,11 +1,17 @@
 package com.hendisantika.config;
 
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hendisantika.dto.PictureDTO;
 import com.hendisantika.service.AdvertisementService;
 import com.hendisantika.service.PictureService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
+
+import java.io.InputStream;
+import java.util.List;
 
 /**
  * Created by IntelliJ IDEA.
@@ -30,5 +36,21 @@ public class DBInit implements CommandLineRunner {
         logger.info("Starting DB Init!");
         loadPictures();
         loadAdvertisements();
+    }
+
+    private void loadPictures() throws Exception {
+        logger.info("Loading Pictures");
+        ObjectMapper mapper = new ObjectMapper();
+        TypeReference<List<PictureDTO>> typeReference = new TypeReference<List<PictureDTO>>() {
+        };
+        InputStream inputStream = TypeReference.class.getResourceAsStream("/json/pictures.json");
+        try {
+            List<PictureDTO> pictures;
+            pictures = mapper.readValue(inputStream, typeReference);
+            pictures.forEach(pictureService::create);
+            logger.info("Number of pictures created: " + pictures.size());
+        } catch (Exception e) {
+            logger.error("Unable to create pictures: " + e.getMessage());
+        }
     }
 }
