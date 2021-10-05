@@ -1,5 +1,7 @@
 package com.hendisantika.helper;
 
+import com.hendisantika.entity.Picture;
+
 /**
  * Created by IntelliJ IDEA.
  * Project : springboot-advertisement
@@ -12,4 +14,7 @@ package com.hendisantika.helper;
 public class ScoreHelper {
     private static final String[] DESCRIPTION_CHARACTERISTICS = {"Luminoso", "Nuevo", "Céntrico", "Reformado", "Atico"};
 
+    private static Integer getPictureScore(Picture picture) {
+        return picture.getQuality() == "HD" ? 20 : 10;
+    }
 }
