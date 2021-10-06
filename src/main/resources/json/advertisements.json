@@ -1,0 +1,70 @@
+[
+  {
+    "id": 1,
+    "description": "This apartment is a bargain, buy, buy, BUY !!!!!",
+    "typology": "CHALET",
+    "houseSize": 300,
+    "picturesIds": []
+  },
+  {
+    "id": 2,
+    "description": "New downtown penthouse recently renovated. Do not miss the opportunity and acquire this luxury penthouse",
+    "typology": "FLAT",
+    "picturesIds": [
+      4
+    ]
+  },
+  {
+    "id": 3,
+    "description": "",
+    "typology": "CHALET",
+    "houseSize": 210,
+    "gardenSize": 25,
+    "picturesIds": [
+      2
+    ]
+  },
+  {
+    "id": 4,
+    "description": "Very bright and recently renovated central penthouse, it seems new",
+    "typology": "FLAT",
+    "houseSize": 130,
+    "picturesIds": [
+      5
+    ]
+  },
+  {
+    "id": 5,
+    "description": "Pisazo",
+    "typology": "FLAT",
+    "picturesIds": [
+      3,
+      4
+    ]
+  },
+  {
+    "id": 6,
+    "description": "",
+    "typology": "GARAGE",
+    "picturesIds": [
+      6
+    ]
+  },
+  {
+    "id": 7,
+    "description": "Garage in the center of Albacete",
+    "typology": "GARAGE",
+    "picturesIds": []
+  },
+  {
+    "id": 8,
+    "description": "Wonderful chalet located on the outskirts of a small rural town. The setting is spectacular, the views magnificent. Buy it now!",
+    "typology": "CHALET",
+    "houseSize": 150,
+    "gardenSize": 20,
+    "picturesIds": [
+      1,
+      7
+    ]
+  }
+]
