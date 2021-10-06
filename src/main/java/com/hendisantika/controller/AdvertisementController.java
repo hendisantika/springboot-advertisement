@@ -44,4 +44,14 @@ public class AdvertisementController {
     public List<AdvertisementDTO> findAllRelevants(@RequestParam(required = false) String sort) {
         return this.findAdvertisements(true, false, sort);
     }
+
+    private List<AdvertisementDTO> findAdvertisements(Boolean relevants, Boolean irrelevants, String sort) {
+        String sortField = null, sortOrder = null;
+        if (sort != null) {
+            String[] sortInfo = sort.split(":");
+            sortField = sortInfo.length > 0 ? sortInfo[0] : null;
+            sortOrder = sortInfo.length > 1 ? sortInfo[1] : "desc";
+        }
+        return advertisementService.findAll(relevants, irrelevants, sortField, sortOrder);
+    }
 }
