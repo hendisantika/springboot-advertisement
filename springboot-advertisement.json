@@ -1,0 +1,128 @@
+{
+  "info": {
+    "_postman_id": "be829200-1dd0-4b85-b036-bafed99ad9b1",
+    "name": "Spring Boot Advertisement API Rest",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "GET /api/advertisement",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/advertisement?sort=score:desc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "advertisement"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "score:desc"
+            }
+          ]
+        },
+        "description": "Get Relevants Advertisement for all users\n\nCan be sorted by ad fields with query param:\n- sort [description, typology, houseSize, gardenSize, score]. Default order, desc.\n\nNo auth required"
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/advertisement/all",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "qualityUser",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/advertisement/all?sort=score:desc",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "advertisement",
+            "all"
+          ],
+          "query": [
+            {
+              "key": "sort",
+              "value": "score:desc"
+            }
+          ]
+        },
+        "description": "Get all advertisement.\n\nCan be filtered with field query param:\n- show [all, relevants, irrelevants]. Default 'all'.\n\nCan be sorted by ad fields with query param:\n- sort [description, typology, houseSize, gardenSize, score]. Default order, 'desc'.\n\nThis endpoint require Basic Auth and user with role QUALITY_USER."
+      },
+      "response": []
+    },
+    {
+      "name": "GET /api/advertisement/calculate-scores",
+      "request": {
+        "auth": {
+          "type": "basic",
+          "basic": [
+            {
+              "key": "username",
+              "value": "qualityUser",
+              "type": "string"
+            },
+            {
+              "key": "password",
+              "value": "password",
+              "type": "string"
+            }
+          ]
+        },
+        "method": "GET",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/advertisement/calculate-scores",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "advertisement",
+            "calculate-scores"
+          ]
+        },
+        "description": "Get advertisement with recalculated scores in request time.\n\nThis endpoint require Basic Auth and user with role QUALITY_USER."
+      },
+      "response": []
+    }
+  ]
+}
