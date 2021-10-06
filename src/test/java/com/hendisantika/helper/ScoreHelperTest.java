@@ -4,10 +4,13 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hendisantika.entity.Advertisement;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.io.InputStream;
 import java.util.List;
+
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,5 +32,13 @@ public class ScoreHelperTest {
         };
         InputStream inputStream = TypeReference.class.getResourceAsStream("/json/exampleData.json");
         this.advertisements = mapper.readValue(inputStream, typeReference);
+    }
+
+    @Test
+    public void testScoreCalculation() throws Exception {
+        for (Advertisement advertisement : advertisements) {
+            int score = ScoreHelper.calculateAdScore(advertisement);
+            assertTrue(score == advertisement.getScore());
+        }
     }
 }
