@@ -39,4 +39,9 @@ public class AdvertisementController {
         boolean irrelevants = show.equals("all") || show.equals("irrelevants");
         return this.findAdvertisements(relevants, irrelevants, sort);
     }
+
+    @GetMapping(value = "/advertisement")
+    public List<AdvertisementDTO> findAllRelevants(@RequestParam(required = false) String sort) {
+        return this.findAdvertisements(true, false, sort);
+    }
 }
