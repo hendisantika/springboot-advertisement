@@ -1,0 +1,160 @@
+openapi: 3.0.2
+info:
+  version: 0.1.0
+  title: Spring Boot Advertisement Service
+  description: Advertisement Management Service
+servers:
+  - url: http://localhost:8080/api
+tags:
+  - name: Advertisement
+paths:
+  /advertisement:
+    get:
+      tags: [ Advertisement ]
+      summary: 'Get relevants advertisements'
+      description: 'Get advertisements with score greater than 40'
+      parameters:
+        - $ref: '#/components/parameters/sort'
+      responses:
+        200:
+          $ref: '#/components/responses/AdvertisementsArray'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /advertisement/all:
+    get:
+      tags: [ Advertisement ]
+      summary: 'Get all advertisements'
+      description: 'Get advertisements list. Role Required QUALITY_USER'
+      security:
+        - basicAuth: [ ]
+      parameters:
+        - $ref: '#/components/parameters/show'
+        - $ref: '#/components/parameters/sort'
+      responses:
+        200:
+          $ref: '#/components/responses/AdvertisementsArray'
+        500:
+          $ref: '#/components/responses/ServerError'
+  /advertisement/calculate-scores:
+    get:
+      tags: [ Advertisement ]
+      summary: 'Get advertisements with recalculated scores'
+      description: 'Get advertisements with score recalculated in request time. Role Required QUALITY_USER'
+      security:
+        - basicAuth: [ ]
+      responses:
+        200:
+          $ref: '#/components/responses/AdvertisementsScoresArray'
+        500:
+          $ref: '#/components/responses/ServerError'
+components:
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+  parameters:
+    show:
+      name: show
+      description: 'Field to show adverstisement filtered by type [ all, irrelevants, relevants ]'
+      required: false
+      in: query
+      schema:
+        type: string
+        enum: [ all, irrelevants, relevants ]
+        default: all
+    sort:
+      name: sort
+      description: 'Field to sort response'
+      required: false
+      in: query
+      schema:
+        type: string
+  responses:
+    ServerError:
+      description: 'Server Error'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    AdvertisementsArray:
+      description: 'Advertisement Array'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/Advertisement'
+    AdvertisementsScoresArray:
+      description: 'Advertisement Scores Array'
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: '#/components/schemas/AdvertisementScore'
+  schemas:
+    Advertisement:
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        typology:
+          type: string
+        houseSize:
+          type: number
+          format: int32
+        gardenSize:
+          type: number
+          format: int32
+        pictures:
+          type: array
+          items:
+            $ref: '#/components/schemas/Picture'
+        irrelevantFrom:
+          type: number
+          format: int32
+        score:
+          type: number
+          format: int32
+    AdvertisementScore:
+      properties:
+        id:
+          type: string
+        description:
+          type: string
+        typology:
+          type: string
+        irrelevantFrom:
+          type: number
+          format: int32
+        score:
+          type: number
+          format: int32
+    Picture:
+      properties:
+        id:
+          type: string
+        url:
+          type: string
+        quality:
+          type: string
+          enum:
+            - 'HD'
+            - 'SD'
+    Error:
+      properties:
+        timestamp:
+          type: integer
+          format: int32
+        status:
+          type: integer
+          format: int32
+        error:
+          type: string
+        exception:
+          type: string
+        message:
+          type: string
+        path:
+          type: string
