@@ -1,0 +1,139 @@
+[
+  {
+    "id": 1,
+    "description": "This text is test and short",
+    "typology": "CHALET",
+    "houseSize": 300,
+    "pictures": [
+    ],
+    "score": -5
+  },
+  {
+    "id": 2,
+    "description": "This text is test and short and very bright",
+    "typology": "FLAT",
+    "houseSize": 100,
+    "pictures": [
+      {
+        "id": 1,
+        "url": "UnaURL",
+        "quality": "SD"
+      }
+    ],
+    "score": 70
+  },
+  {
+    "id": 1,
+    "description": "This apartment is a bargain, buy, buy, BUY !!!!!",
+    "typology": "CHALET",
+    "houseSize": 300,
+    "pictures": [
+    ],
+    "score": 15,
+    "irrelevantFrom": 1557693367464
+  },
+  {
+    "id": 2,
+    "description": "New downtown penthouse recently renovated. Do not miss the opportunity and acquire this luxury penthouse",
+    "typology": "FLAT",
+    "pictures": [
+      {
+        "id": 4,
+        "url": "http://www.idealista.com/pictures/4",
+        "quality": "HD"
+      }
+    ],
+    "score": 60
+  },
+  {
+    "id": 3,
+    "description": "",
+    "typology": "CHALET",
+    "houseSize": 210,
+    "gardenSize": 25,
+    "pictures": [
+      {
+        "id": 2,
+        "url": "http://www.idealista.com/pictures/2",
+        "quality": "HD"
+      }
+    ],
+    "score": 10,
+    "irrelevantFrom": 1557693367499
+  },
+  {
+    "id": 4,
+    "description": "Very bright and recently renovated central penthouse, it seems new",
+    "typology": "FLAT",
+    "houseSize": 130,
+    "pictures": [
+      {
+        "id": 5,
+        "url": "http://www.idealista.com/pictures/5",
+        "quality": "SD"
+      }
+    ],
+    "score": 100
+  },
+  {
+    "id": 5,
+    "description": "Pisazo",
+    "typology": "FLAT",
+    "pictures": [
+      {
+        "id": 3,
+        "url": "http://www.idealista.com/pictures/3",
+        "quality": "SD"
+      },
+      {
+        "id": 4,
+        "url": "http://www.idealista.com/pictures/4",
+        "quality": "HD"
+      }
+    ],
+    "score": 25,
+    "irrelevantFrom": 1557693367515
+  },
+  {
+    "id": 6,
+    "description": "",
+    "typology": "GARAGE",
+    "pictures": [
+      {
+        "id": 6,
+        "url": "http://www.idealista.com/pictures/6",
+        "quality": "SD"
+      }
+    ],
+    "score": 50
+  },
+  {
+    "id": 7,
+    "description": "Garage in the center of Albacete",
+    "typology": "GARAGE",
+    "pictures": [
+    ],
+    "score": -5,
+    "irrelevantFrom": 1557693367530
+  },
+  {
+    "id": 8,
+    "description": "Wonderful villa located on the outskirts of a small rural town. The setting is spectacular, the views magnificent. Buy it now!",
+    "typology": "CHALET",
+    "houseSize": 150,
+    "gardenSize": 20,
+    "pictures": [
+      {
+        "id": 1,
+        "url": "http://www.idealista.com/pictures/1",
+        "quality": "SD"
+      },
+      {
+        "id": 7,
+        "url": "http://www.idealista.com/pictures/7",
+        "quality": "SD"
+      }
+    ],
+    "score": 85
+  }
+]
