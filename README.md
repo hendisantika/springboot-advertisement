@@ -116,7 +116,7 @@ code: [Postman Collection](springboot-advertisement.json "Postman collection")
 Execute the following command:
 
 ```bash
-$ gradle bootRun
+$ mvn clean spring-boot:run
 ```
 
 #### Compile Service
@@ -124,7 +124,7 @@ $ gradle bootRun
 Execute the following command:
 
 ```bash
-$ gradle build
+$ mvn clean package
 ```
 
 With this command, jar of service will be created in folder `build/libs/`
@@ -134,7 +134,7 @@ With this command, jar of service will be created in folder `build/libs/`
 Execute the following command:
 
 ```bash
-$ java -jar build/libs/advertisement-0.0.1-SNAPSHOT.jar
+$ java -jar target/springboot-advertisement-0.0.1.jar
 ```
 
 #### Docker
@@ -142,14 +142,14 @@ $ java -jar build/libs/advertisement-0.0.1-SNAPSHOT.jar
 In order to create container with service, you must execute following operations:
 
 ```
-$ gradle clean build
-$ docker build -t jmbg/advertisement .      
-$ docker run -p 8080:8080 jmbg/advertisement
+$ mvn clean package
+$ docker build -t hendisantika/advertisement:0.0.1 .      
+$ docker run -p 8080:8080 hendisantika/advertisement:0.0.1
 ```
 
 #### Demo Users
 
-In order to test security in differents endpoints, we create two users in memory:
+In order to test security in different endpoints, we create two users in memory:
 
 - `user/password`: Normal user with roles [ `USER` ].
 - `qualityUser/password`: Quality user, with roles [ `USER`, `QUALITY_USER` ]
