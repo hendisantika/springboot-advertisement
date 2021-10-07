@@ -2,9 +2,12 @@ package com.hendisantika.controller;
 
 import com.hendisantika.dto.AdvertisementDTO;
 import com.hendisantika.dto.AdvertisementScoreDTO;
+import com.hendisantika.entity.Advertisement;
 import com.hendisantika.service.AdvertisementService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,6 +41,11 @@ public class AdvertisementController {
         boolean relevants = show.equals("all") || show.equals("relevants");
         boolean irrelevants = show.equals("all") || show.equals("irrelevants");
         return this.findAdvertisements(relevants, irrelevants, sort);
+    }
+
+    @PostMapping(value = "/advertisement")
+    public Advertisement createNewAdvertisement(@RequestBody AdvertisementDTO advertisementDTO) {
+        return this.advertisementService.create(advertisementDTO);
     }
 
     @GetMapping(value = "/advertisement")
