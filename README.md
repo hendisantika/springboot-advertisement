@@ -84,7 +84,7 @@ All endpoints are describe in swagger yaml in spec folder:
 
 #### GET /api/advertisement
 
-With this endpoint list of relevants advertisement can be retrieve. Request result can be sorted using following query
+With this endpoint list of relevant advertisement can be retrieved. Request result can be sorted using following query
 param:
 
 - `sort`: In order to retrieve sorted response.
@@ -125,7 +125,7 @@ Request result can be filtered using following query params:
 #### GET /api/advertisement/calculate-scores
 
 With this endpoint all advertisements score is calculated in request time.
-> Only registered users with role QUALITY_USER can be perform this action.
+> Only registered users with role QUALITY_USER can perform this action.
 
 #### Postman
 

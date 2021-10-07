@@ -1,6 +1,6 @@
 {
   "info": {
-    "_postman_id": "be829200-1dd0-4b85-b036-bafed99ad9b1",
+    "_postman_id": "c7447bf1-e6c8-4b54-8530-aaf15fe5800f",
     "name": "Spring Boot Advertisement API Rest",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
@@ -10,10 +10,6 @@
       "request": {
         "method": "GET",
         "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
         "url": {
           "raw": "http://localhost:8080/api/advertisement?sort=score:desc",
           "protocol": "http",
@@ -56,10 +52,6 @@
         },
         "method": "GET",
         "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
         "url": {
           "raw": "http://localhost:8080/api/advertisement/all?sort=score:desc",
           "protocol": "http",
@@ -103,10 +95,6 @@
         },
         "method": "GET",
         "header": [],
-        "body": {
-          "mode": "raw",
-          "raw": ""
-        },
         "url": {
           "raw": "http://localhost:8080/api/advertisement/calculate-scores",
           "protocol": "http",
@@ -121,6 +109,35 @@
           ]
         },
         "description": "Get advertisement with recalculated scores in request time.\n\nThis endpoint require Basic Auth and user with role QUALITY_USER."
+      },
+      "response": []
+    },
+    {
+      "name": "Add New Advertisement",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n    \"id\": 9,\n    \"description\": \"Very bright and recently renovated central penthouse, it seems new\",\n    \"typology\": \"FLAT\",\n    \"houseSize\": 130,\n    \"irrelevantFrom\": 23,\n    \"gardenSize\": 212,\n    \"pictures\": [\n        {\n            \"id\": 5,\n            \"url\": \"http://www.idealista.com/pictures/5\",\n            \"quality\": \"SD\"\n        }\n    ],\n    \"picturesIds\": [1,2,3],\n    \"score\": 75\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/advertisement",
+          "protocol": "http",
+          "host": [
+            "localhost"
+          ],
+          "port": "8080",
+          "path": [
+            "api",
+            "advertisement"
+          ]
+        }
       },
       "response": []
     }
