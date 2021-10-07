@@ -53,6 +53,29 @@ This service manage information about advertisements.
 }
 ```
 
+for example:
+
+```json
+
+{
+  "id": 9,
+  "description": "Very bright and recently renovated central penthouse, it seems new",
+  "typology": "FLAT",
+  "houseSize": 130,
+  "irrelevantFrom": 23,
+  "gardenSize": 212,
+  "pictures": [
+    {
+      "id": 5,
+      "url": "http://www.idealista.com/pictures/5",
+      "quality": "SD"
+    }
+  ],
+  "picturesIds": [1,2,3],
+  "score": 75
+}
+```
+
 ## EndPoints
 
 All endpoints are describe in swagger yaml in spec folder:
